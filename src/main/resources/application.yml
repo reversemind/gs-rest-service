@@ -1,3 +1,7 @@
+#spring:
+#   application.name: rest-security
+#   profiles.active: development
+
 server.port: 18080
 
 security:
@@ -15,12 +19,12 @@ spring:
   jpa: {
           show-sql: 'true',
           hibernate.ddl-auto: 'create',
-          hibernate.dialect: 'org.hibernate.dialect.MySQL5Dialect'
+          properties.hibernate.dialect: 'org.hibernate.dialect.MySQL5Dialect'
         }
   datasource:
     url: 'jdbc:mysql://localhost/TEST_DEV'
-    username: 'root'
-    password: 'root'
+    username: 'test'
+    password: 'test'
     driverClassName: 'com.mysql.jdbc.Driver'
     initialSize: 1
     minIdle: 0
