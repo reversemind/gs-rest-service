@@ -1,11 +1,11 @@
-package hello;
+package com.test.hello.domain;
 
-public class Greeting {
+public class Hi {
 
     private final long id;
     private final String content;
 
-    public Greeting(long id, String content) {
+    public Hi(long id, String content) {
         this.id = id;
         this.content = content;
     }
