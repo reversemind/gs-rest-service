@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -17,7 +18,9 @@ public class HiController {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/hi")
-    public Hi hi(@RequestParam(value="name", defaultValue="World") String name) {
+    public Hi hi(Principal principal, @RequestParam(value="name", defaultValue="World") String name) {
+        String userId = principal.getName();
+        System.out.println("userId: " + userId);
         return new Hi(counter.incrementAndGet(),
                 String.format(template, name));
     }

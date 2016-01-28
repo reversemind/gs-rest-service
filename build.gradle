@@ -29,13 +29,50 @@ targetCompatibility = 1.8
 
 dependencies {
 
-    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
-    compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
+    //Spring
+    ['web', 'data-jpa', 'data-rest', 'security'].each {
+        compile "org.springframework.boot:spring-boot-starter-$it:$springBootVersion"
+    }
+
     compile("org.projectlombok:lombok:$lombokVersion")
 
     // Test
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("junit:junit")
+
+
+
+    //MySQL
+    compile "mysql:mysql-connector-java:$mysqlVersion"
+    compile "com.mchange:c3p0:$c3p0Version"
+//
+//    //Jackson Data Type
+//    ['jdk8', 'jsr310'].each {
+//        compile "com.fasterxml.jackson.datatype:jackson-datatype-$it:$jacksonVer"
+//    }
+//    compile "commons-codec:commons-codec:$commonsCodecVer"
+//    compile "net.kaczmarzyk:specification-arg-resolver:$specResolverVer"
+//    compile "com.google.guava:guava:$guavaVer"
+//    compile "com.jayway.jsonpath:json-path:$jsonpathVer"
+//    compile "org.atteo:evo-inflector:$evoInflectorVer"
+//    compile "org.jadira.usertype:usertype.extended:$jadiraVer"
+//    compile "org.hibernate:hibernate-validator:$hibernateValidatorVer"
+//    compile "ma.glasnost.orika:orika-core:$orikaVer"
+//    compile "org.javassist:javassist:$javassistVer"
+
+
+    // Test
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+
+//    testCompile "org.spockframework:spock-core:$spockVer"
+//    testCompile "org.spockframework:spock-spring:$spockVer"
+//    testCompile "org.codehaus.groovy:groovy-all:$groovyVer"
+//
+//    // optional dependencies for using Spock
+//    testRuntime "cglib:cglib:$cglibVer" // allows mocking of classes (in addition to interfaces)
+//    testRuntime "org.objenesis:objenesis:$objenesisVer"
+//    // allows mocking of classes without default constructor (together with CGLIB)
+
 }
 
 task wrapper(type: Wrapper) {

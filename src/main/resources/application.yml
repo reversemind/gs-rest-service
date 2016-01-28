@@ -2,11 +2,33 @@ server.port: 18080
 
 security:
   user:
-    name: 'user'           # Default user name.
-    password: 'password'   # Password for the default user name. A random password is logged on startup by default.
-    role: 'USER'           # Granted roles for the default user name.
+#    name: 'user'           # Default user name.
+#    password: 'password'   # Password for the default user name. A random password is logged on startup by default.
+#    role: 'USER'           # Granted roles for the default user name.
   basic.enabled: true
 
 logging.level:
     org.springframework.security: INFO
     org.springframework.boot.autoconfigure.security: INFO
+
+spring:
+  jpa: {
+          show-sql: 'true',
+          hibernate.ddl-auto: 'create',
+          hibernate.dialect: 'org.hibernate.dialect.MySQL5Dialect'
+        }
+  datasource:
+    url: 'jdbc:mysql://localhost/TEST_DEV'
+    username: 'root'
+    password: 'root'
+    driverClassName: 'com.mysql.jdbc.Driver'
+    initialSize: 1
+    minIdle: 0
+    maxActive: 20
+    maxIdle: 20
+    testWhileIdle: true
+    validationQuery: 'SELECT 1'
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    connectionProperties: 'connectTimeout=5000;socketTimeout=60000;useUnicode=true;characterEncoding=UTF8;useConfigs=maxPerformance,solarisMaxPerformance;prepStmtCacheSize=512;dumpQueriesOnException=true'
+  profiles.active: 'dev'
